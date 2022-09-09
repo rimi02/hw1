@@ -11,16 +11,30 @@ the function below should be the only one in this file.
 */
 
 #include "split.h"
+#include <iostream>
 
 /* Add a prototype for a helper function here if you need */
+void helper_function(Node*& in, Node*& odds, Node*& evens);
 
 void split(Node*& in, Node*& odds, Node*& evens)
 {
   /* Add code here */
 // WRITE YOUR CODE HERE
-
+ helper_function(in, odds, evens);
+ in = nullptr;
 }
 
 /* If you needed a helper function, write it here */
 
 // WRITE YOUR CODE HERE
+void helper_function(Node*& in, Node*& odds, Node*& evens) {
+if(in == nullptr) {
+  return;
+} helper_function(in->next, odds, evens);
+if((in->value)%2 == 0 ) {
+  in->next = evens;
+  evens = in;
+} else if((in->value)%2 == 1) {
+  in->next = odds;
+  odds = in;
+} }
